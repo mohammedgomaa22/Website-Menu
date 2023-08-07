@@ -1,0 +1,128 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* --------------------------------------- */
+
+:root {
+    --main-color: #C91D2E;
+    --second-color: #EFEFEF;
+    --h-color: #534F4F;
+    --p-color: #AFADAD;
+}
+/* --------------------------------------- */
+
+body {
+    font-family: 'Cairo', sans-serif;
+    /* position: relative; */
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background-color: white;
+}
+::-webkit-scrollbar-thumb {
+    /* background-color: var(--main-color); */
+    background-image: linear-gradient(135deg, #F54D5E 0%, #C74350 100%);
+}
+/* --------------------------------------- */
+
+/* Classes */
+.main-color {
+    color: var(--main-color);
+}
+.main-bg {
+    background-color: var(--main-color);
+}
+.second-color {
+    color: var(--second-color);
+}
+.second-bg {
+    background-color: var(--second-color);
+}
+/* -------------- */
+.h-color {
+    color: var(--h-color);
+}
+/* -------------- */
+.p-color {
+    color: var(--p-color);
+}
+/* --------------------------------------- */
+
+/* ********** Start Header ********** */
+.header .line {
+    background-image: linear-gradient(0deg, #F54D5E 0%, #C74350 100%);
+}
+.sea_icon {
+    background-image: linear-gradient(0deg, #F54D5E 0%, #C74350 100%);
+}
+
+.slider {
+    background-image: linear-gradient(180deg, #F2F2F2 0%, #FAFAFA 100%);
+}
+.text h2 {
+    background: -webkit-linear-gradient(269deg, #FF707F 0%, #C92E3C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* ********** End Header ********** */
+.category .head h2 {
+    background: -webkit-linear-gradient(269deg, #FF707F 0%, #C92E3C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.category .title-line {
+    background-image: linear-gradient(281deg, #FF6B7A 0%, #DA3040 100%);
+}
+.category .name.active {
+    color: var(--main-color);
+}
+.category .name.active::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: var(--main-color);
+    left: 0;
+    bottom: -5px;
+}
+.category .row::-webkit-scrollbar {
+    height: 2px;
+}
+.category .row {
+    scroll-snap-type: x mandatory;
+}
+
+
+/* --------------------------------------- */
+.sidebar h1 {
+    background: -webkit-linear-gradient(269deg, #FF707F 0%, #C92E3C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar button {
+    background-image: linear-gradient(281deg, #e94f5f 0%, #DA3040 100%);
+}
+
+.number__orders .head,
+.how__orders .head {
+    background-image: linear-gradient(281deg, #e94f5f 0%, #DA3040 100%);
+}
+
+
+.overlay .aprr button {
+    background-image: linear-gradient(281deg, #e94f5f 0%, #DA3040 100%);
+}
+/* --------------------------------------- */
+
+.cart-item,
+.del-item {
+    background-image: linear-gradient(281deg, #e94f5f 0%, #DA3040 100%);
+}
+
+footer {
+    background-image: linear-gradient(135deg, #F54D5E 0%, #C74350 100%);
+}

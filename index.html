@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بــاتشــــا</title>
+    <!-- Tailwind CSS file -->
+    <link href="./css/tailwind.css" rel="stylesheet">
+    <!-- Font Awesome CSS file -->
+    <link href="./css/all.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Animation cdn -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="icon" href="./img/pat.jfif">
+</head>
+<body>
+
+    
+    <div id="app" class="relative">
+        <!-- Salla -->
+        <button class="cart-btn main-bg p-3 fixed bottom-11 left-1/2 -translate-x-1/2 z-40 text-white font-semibold rounded-lg">
+            الطلب الكلي
+            <span class="total-price mr-5">
+                <span>80</span>
+                د.ع
+            </span>
+        </button>
+        <!-- Salla -->
+
+        <!-- ********** Start Overlay Events ( Add , Edit , Delete ) -->
+        <div class="overlay fixed left-0 top-0 p-5 h-full w-full bg-[#00000070] z-[100] hidden justify-center items-center">
+
+            <!-- number__orders -->
+            <div class="number__orders rounded-xl overflow-hidden text-[#FFF] bg-white hidden">
+                <div class="head p-3 text-center text-xl font-semibold">عدد الوجبات</div>
+                <div class="num-or flex p-6 text-black">
+                    <span class="block ml-4">حدد عدد الوجبات :</span>
+                    <span>
+                        <div class="nums w-20 h-6 rounded-3xl text-center relative border border-[#EFEFEF] overflow-hidden">
+                            1
+                            <span
+                                class="pl absolute h-6 w-6 bg-slate-200 -right-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-">+</span>
+                            <span
+                                class="mi absolute h-6 w-6 bg-slate-200 -left-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-extrabold">-</span>
+                        </div>
+                    </span>
+                </div>
+                <!-- button -->
+                <div class="aprr my-3 text-center overflow-hidden">
+                    <button class="appr text-white rounded-md w-fit py-2 px-4 text-xl font-semibold">تأكيد</button>
+                </div>
+            </div>
+
+            <!-- how__orders -->
+            <div class="how__orders rounded-xl overflow-hidden text-[#FFF] bg-white w-full md:w-[400px] hidden">
+                <div class="head p-3 text-center text-xl font-semibold">ادخل بياناتك</div>
+                <div class="list flex p-6 text-black">
+                    <form action="" class="flex flex-col gap-5 w-full">
+                        <input type="text" name="name" id="name" placeholder="ادخل اسمك" class="border rounded-md p-3 outline-none">
+                        <input type="text" name="address" id="address" placeholder="ادخل عنوانك" class="border rounded-md p-3 outline-none">
+                        <input type="number" name="phone" id="phone" placeholder="ادخل تليفونك" class="border rounded-md p-3 outline-none">
+                        <input type="number" name="table-num" id="table-num" placeholder="ادخل رقم الطاولة اذا توفر" class="border rounded-md p-3 outline-none">
+
+
+                        <!-- delivery method -->
+                        <div class="delivery_method">
+                            <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">طريقة الطلب</h3>
+                            <ul class="w-full text-sm font-medium text-gray-900 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <li class="w-full">
+                                    <div class="flex gap-2 items-center pl-3">
+                                        <input id="horizontal-list-radio-license" type="radio" value="restaurant" name="list-radio"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer">
+                                        <label for="horizontal-list-radio-license"
+                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">في المكان </label>
+                                    </div>
+                                </li>
+                                <li class="w-full">
+                                    <div class="flex gap-2 items-center pl-3">
+                                        <input id="horizontal-list-radio-id" type="radio" value="travel" name="list-radio"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer">
+                                        <label for="horizontal-list-radio-id"
+                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">سفري دون توصيل</label>
+                                    </div>
+                                </li>
+                                <li class="w-full">
+                                    <div class="flex gap-2 items-center pl-3">
+                                        <input id="horizontal-list-radio-millitary" type="radio" value="delivery" name="list-radio"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer">
+                                        <label for="horizontal-list-radio-millitary"
+                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">توصيل</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                            <!-- delivery method -->
+
+
+                    </form>
+                </div>
+                <!-- button -->
+                <div class="aprr my-3 text-center overflow-hidden">
+                    <button class="appr text-white rounded-md w-fit py-2 px-4 text-xl font-semibold">تأكيد</button>
+                </div>
+            </div>
+        </div>
+        <!-- ********** End Overlay Events ( Add , Edit , Delete ) -->
+        <!-- ********** Start Sidebar ********** -->
+        <div class="sidebar bg-[white] shadow-lg fixed w-[300px] lg:w-[450px] right-0 h-screen py-11 px-6 flex-col items-center duration-500 z-50 ||| translate-x-[100%]">
+            <!-- Head -->
+            <div class="head relative flex justify-between items-center">
+                <h1 class="text-3xl font-extrabold py-3">سلة الطلبات</h1>
+                <span class="absolute right-0 bottom-0 h-[6px] w-1/3 main-bg rounded-sm"></span>
+                <div class="fa-regular fa-rectangle-xmark close cursor-pointer text-3xl px-2 text-red-600"></div>
+            </div>
+            <!-- Orders -->
+            <div class="orders">
+                <!-- Row -->
+                <div class="row my-7 flex flex-col gap-8 p-5 shadow-sm overflow-y-auto max-h-[250px] md:max-h-[400px]">
+                    <!-- Item -->
+                    <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                        <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                            <img src="./img/delicious.png" class="w-full" alt="...">
+                        </div>
+                        <div class="info">
+                            <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                            <p class="text-[14px] font-bold my-2 main-color">
+                                <span class="price">30</span>
+                                دينار
+                            </p>
+                            <div class="nums w-20 h-6 rounded-3xl text-center relative border border-[#EFEFEF] overflow-hidden">
+                                1
+                                <span class="pl absolute h-6 w-6 bg-slate-200 -right-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-">+</span>
+                                <span class="mi absolute h-6 w-6 bg-slate-200 -left-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-extrabold">-</span>
+                            </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="del-item absolute w-8 h-8 -left-3 -top-3 flex justify-center items-center p-1 rounded-full text-sm text-white border cursor-pointer">
+                            <i class="fas fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                        <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                            <img src="./img/delicious.png" class="w-full" alt="...">
+                        </div>
+                        <div class="info">
+                            <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                            <p class="text-[14px] font-bold my-2 main-color">
+                                <span class="price">30</span>
+                                دينار
+                            </p>
+                            <div class="nums w-20 h-6 rounded-3xl text-center relative border border-[#EFEFEF] overflow-hidden">
+                                1
+                                <span class="pl absolute h-6 w-6 bg-slate-200 -right-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-">+</span>
+                                <span class="mi absolute h-6 w-6 bg-slate-200 -left-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-extrabold">-</span>
+                            </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="del-item absolute w-8 h-8 -left-3 -top-3 flex justify-center items-center p-1 rounded-full text-sm text-white border cursor-pointer">
+                            <i class="fas fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                        <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                            <img src="./img/delicious.png" class="w-full" alt="...">
+                        </div>
+                        <div class="info">
+                            <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                            <p class="text-[14px] font-bold my-2 main-color">
+                                <span class="price">30</span>
+                                دينار
+                            </p>
+                            <div class="nums w-20 h-6 rounded-3xl text-center relative border border-[#EFEFEF] overflow-hidden">
+                                1
+                                <span class="pl absolute h-6 w-6 bg-slate-200 -right-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-">+</span>
+                                <span class="mi absolute h-6 w-6 bg-slate-200 -left-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-extrabold">-</span>
+                            </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="del-item absolute w-8 h-8 -left-3 -top-3 flex justify-center items-center p-1 rounded-full text-sm text-white border cursor-pointer">
+                            <i class="fas fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <!-- Item -->
+                    <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                        <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                            <img src="./img/delicious.png" class="w-full" alt="...">
+                        </div>
+                        <div class="info">
+                            <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                            <p class="text-[14px] font-bold my-2 main-color">
+                                <span class="price">30</span>
+                                دينار
+                            </p>
+                            <div class="nums w-20 h-6 rounded-3xl text-center relative border border-[#EFEFEF] overflow-hidden">
+                                1
+                                <span class="pl absolute h-6 w-6 bg-slate-200 -right-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-">+</span>
+                                <span class="mi absolute h-6 w-6 bg-slate-200 -left-[1px] -top-[1px] text-center leading-5 cursor-pointer main-color font-extrabold">-</span>
+                            </div>
+                        </div>
+                        <!-- Cart -->
+                        <div class="del-item absolute w-8 h-8 -left-3 -top-3 flex justify-center items-center p-1 rounded-full text-sm text-white border cursor-pointer">
+                            <i class="fas fa-trash-can"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- data__Orders -->
+            <div class="data__orders text-lg font-bold text-[#656262] flex flex-col gap-5">
+                <div class="flex justify-between items-center">
+                    <span class="">المجموع الفرعي</span>
+                    <span class="num">100</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="">الخصم</span>
+                    <span class="dis">20</span>
+                </div>
+                <div class="flex justify-between items-center text-black border-t pt-4">
+                    <span class="">الاجمالي</span>
+                    <span class="total">80</span>
+                </div>
+            </div>
+            <!-- button -->
+            <div class="button mt-10 rounded-lg overflow-hidden">
+                <button class="appr_order text-white w-full px-5 py-3 text-xl font-semibold">تأكيد الطلب</button>
+            </div>
+        </div>
+        <!-- ********** End Sidebar ********** -->
+        <!-- ********** Start Page ********** -->
+        <div class="page bg-white">
+            <!-- ********** Start Header ********** -->
+            <header class="header">
+                <div class="line h-3"></div>
+                <div class="container mx-auto px-2">
+                    <!-- Navbar -->
+                    <div class="nav flex flex-col md:flex-row justify-between items-center gap-1 py-4 md:gap-32 h-36">
+                        <!-- logo -->
+                        <div data-aos="fade-left" class="logo">
+                            <h1 class="text-[#474444] text-2xl font-bold">بــاتشــــا</h1>
+                        </div>
+                        <!-- Row -->
+                        <div class="flex justify-between items-center gap-7 md:gap-36 w-full">
+                            <!-- Search -->
+                            <div data-aos="zoom-in" class="search relative text-sm md:text-lg font-semibold text-[#B7B6B6] h-14 overflow-hidden rounded-md shadow-sm flex-1 border">
+                                <i class="fab fa-sistrix absolute right-0 top-1/2 -translate-y-1/2 text-lg md:text-2xl pr-1"></i>
+                                <input type="search" name="search" id="search" placeholder="ابحث عن صنف" class="w-full px-8 h-full outline-none">
+                                <div class="sea_icon absolute left-0 top-1/2 -translate-y-1/2 h-full flex items-center justify-center w-14">
+                                    <i class="fab fa-sistrix text-lg md:text-2xl text-white"></i>
+                                </div>
+                            </div>
+                            <!-- Cart -->
+                            <div data-aos="fade-right" class="cart-btn w-14 h-14 flex justify-center items-center p-2 rounded-xl text-2xl main-color shadow-md relative border cursor-pointer">
+                                <span class="number rounded-full text-sm font-bold h-6 w-6 text-white absolute -top-2 -right-2 bg-[#D34553] flex justify-center items-center">2</span>
+                                <i class="fa-brands fa-opencart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- ********** End Header ********** -->
+            <!-- ********** Start Slider ********** -->
+            <section class="slider" data-aos="zoom-in">
+                <div class="container mx-auto px-2">
+                    <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-carousel-slide>
+                        <!--Carousel indicators-->
+                        <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+                            data-te-carousel-indicators>
+                            <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="0" data-te-carousel-active
+                                class="mx-[3px] box-content h-[15px] w-[15px] rounded-[50%] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent main-bg bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="1"
+                                class="mx-[3px] box-content h-[15px] w-[15px] rounded-[50%] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent main-bg bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                                aria-label="Slide 2"></button>
+                        </div>
+                    
+                        <!--Carousel items-->
+                        <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                            <!--First item-->
+                            <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
+                                <div class="content flex flex-col md:flex-row gap-3 md:justify-between items-center md:h-[700px] py-5">
+                                    <div class="text text-xl md:text-3xl font-bold text-center md:text-right">
+                                        <h2 class="text-4xl md:text-5xl mb-2 py-2 md:mb-4 md:py-3 font-extrabold">عروضنا اليوم</h2>
+                                        <p class="leading-10">اشتري وجبه شيش طاووق وتحصل <br>علي توصيل مجانا.. </p>
+                                    </div>
+                                    <div class="img mb-4 md:mb-0 relative flex justify-center items-center">
+                                        <img src="./img/delicious.png" class="absolute" alt="..." loading="lazy"/>
+                                        <img src="./img/41743-removebg-preview.png" class="" alt="..." loading="lazy"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Second item-->
+                            <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                data-te-carousel-item style="backface-visibility: hidden">
+                                <div class="content flex flex-col md:flex-row gap-3 md:justify-between items-center md:h-[700px] py-5">
+                                    <div class="text text-xl md:text-3xl font-bold text-center md:text-right">
+                                        <h2 class="text-4xl md:text-5xl mb-2 py-2 md:mb-4 md:py-3 font-extrabold">عروضنا اليوم</h2>
+                                        <p class="leading-10">اشتري وجبه شيش طاووق وتحصل <br>علي توصيل مجانا.. </p>
+                                    </div>
+                                    <div class="img mb-4 md:mb-0 relative flex justify-center items-center">
+                                        <img src="./img/delicious.png" class="absolute" alt="..." loading="lazy"/>
+                                        <img src="./img/41743-removebg-preview.png" class="" alt="..." loading="lazy"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ********** End Slider ********** -->
+            <!-- ********** Start Category ********** -->
+            <section class="category py-20">
+                <div class="container mx-auto px-2">
+                    <div class="head text-center">
+                        <h2 class="text-3xl font-extrabold relative">
+                        الاصنـاف
+                            <span class="title-line absolute h-2 w-16 left-1/2 -bottom-3 -translate-x-1/2"></span>
+                        </h2>
+                    </div>
+                    <div class="row py-10 flex md:justify-center gap-4 overflow-y-auto">
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center active">
+                                <h3 class="font-extrabold max-w-[150px]"> الرئيسية</h3>
+                            </div>
+                        </div>
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center">
+                                <h3 class="font-extrabold max-w-[150px]">الشوربة</h3>
+                            </div>
+                        </div>
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center">
+                                <h3 class="font-extrabold max-w-[150px]">السلطات</h3>
+                            </div>
+                        </div>
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center">
+                                <h3 class="font-extrabold max-w-[150px]">المقبلات</h3>
+                            </div>
+                        </div>
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center">
+                                <h3 class="font-extrabold max-w-[150px]">الحلويات</h3>
+                            </div>
+                        </div>
+                        <!-- Col-1 -->
+                        <div class="col cate flex gap-1 flex-col justify-center items-center cursor-pointer duration-500 snap-start">
+                            <div class="img h-28 w-28 overflow-hidden rounded-xl">
+                                <img src="./img/Rectangle 1100.png" alt="..." class="w-full h-full" loading="lazy">
+                            </div>
+                            <div class="name relative text-center">
+                                <h3 class="font-extrabold max-w-[150px]">المشروبات البارده</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ********** End Category ********** -->
+            <!-- ********** Start Items List ********** -->
+            <section class="items__list pb-20">
+                <div class="container mx-auto px-4">
+                    <!-- Row -->
+                    <div class="row grid md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-6">
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">- نصف فرخة - طبق ارز - بطاطس - بيبسي نصف فرخة -نصف فرخة - طبق ارز - بطاطس - بيبس ينصف فرخة - طبق ارز - بطاطس - بيبسي  طبق ارز - بطاطس - بيبسي نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="item relative p-4 rounded-lg shadow-sm flex gap-3 items-center border">
+                            <div class="img w-24 h-24 bg-slate-100 border rounded-lg flex items-center">
+                                <img src="./img/delicious.png" class="w-full" alt="...">
+                            </div>
+                            <div class="info">
+                                <h3 class="text-[#534F4F] font-bold">وجبة فراخ مشوية</h3>
+                                <p class="text-[14px] font-bold text-[#AFADAD] my-2">نصف فرخة - طبق ارز - بطاطس - بيبسي</p>
+                                <p class="text-[14px] font-bold main-color">
+                                    <span class="price">30</span>
+                                    دينار
+                                </p>
+                                <!-- Cart -->
+                                <div class="cart-item absolute w-12 h-12 -left-5 top-1/2 -translate-y-1/2 flex justify-center items-center p-2 rounded-full text-2xl text-white border cursor-pointer">
+                                    <i class="fa-brands fa-opencart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ********** End Items List ********** -->
+            <!-- ********** Start Footer ********** -->
+            <footer class="footer py-4 h-16 flex items-center justify-center text-center font-semibold text-sm text-[#FFF]">
+                <a href="#" target="_blank" rel="noopener noreferrer">الأمواج الرقمية للحلول الذكية</a>
+            </footer>
+            <!-- ********** End Footer ********** -->
+        </div>
+        <!-- ********** End Page ********** -->
+    </div>
+    <!-- Animation cdn -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- ----------  -->
+    <script type="text/javascript" src="./node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <!-- main js -->
+    <script type="module" src="./js/main.js"></script>
+    <script src="./js/overlay.js"></script>
+</body>
+</html>
